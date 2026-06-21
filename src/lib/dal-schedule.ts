@@ -9,12 +9,12 @@ export interface DalMoment {
   end: Date;
 }
 
-const GRACE_MINUTES = 5;
+export const GRACE_MINUTES = 5;
 
-const MORNING_PEAK_START = { hours: 6, minutes: 30 };
-const MORNING_PEAK_END = { hours: 9, minutes: 0 };
-const AFTERNOON_PEAK_START = { hours: 16, minutes: 0 };
-const AFTERNOON_PEAK_END = { hours: 18, minutes: 30 };
+export const MORNING_PEAK_START = { hours: 6, minutes: 30 };
+export const MORNING_PEAK_END = { hours: 9, minutes: 0 };
+export const AFTERNOON_PEAK_START = { hours: 16, minutes: 0 };
+export const AFTERNOON_PEAK_END = { hours: 18, minutes: 30 };
 
 /**
  * Builds the check-in windows for a single calendar day. The 5 minute grace

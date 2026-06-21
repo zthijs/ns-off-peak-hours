@@ -3,6 +3,7 @@
 import { RushCalm } from "@/assets/icons/rush-calm";
 import { RushOvercrowded } from "@/assets/icons/rush-overcrowded";
 import { DalTimeline } from "@/components/dal-timeline";
+import { InfoPopover } from "@/components/info-popover";
 import { TariffStatus } from "@/components/tariff-status";
 import { useDalMoments } from "@/hooks/use-dal-moments";
 
@@ -11,6 +12,7 @@ export default function Page() {
 
   return (
     <>
+      <InfoPopover />
       <main className="flex min-h-dvh items-center justify-center p-6 pb-[33dvh] lg:pb-[calc(33dvh+3rem)]">
         {!isLoading && (
           <div className="flex flex-col items-center gap-3 text-center">
