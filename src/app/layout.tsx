@@ -83,9 +83,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="nl" className={cn(sans.variable, "h-full antialiased")}>
+      <head>
+        <Analytics />
+      </head>
       <body className="min-h-full flex flex-col">
         {children}
-        <Analytics />
         <script
           type="application/ld+json"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static, build-time JSON-LD with no user input
