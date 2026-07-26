@@ -1,9 +1,16 @@
 "use client";
 
-import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import {
+  CloseButton,
+  Popover,
+  PopoverBackdrop,
+  PopoverButton,
+  PopoverPanel,
+} from "@headlessui/react";
 import { addYears, format, parseISO } from "date-fns";
 import { nl } from "date-fns/locale";
 import { useEffect, useState } from "react";
+import { Close } from "@/assets/icons/close";
 import { Info } from "@/assets/icons/info";
 import { useIsPublicHoliday } from "@/hooks/use-is-public-holiday";
 import {
@@ -38,19 +45,34 @@ export const InfoPopover = () => {
   const isLoading = !now || isThisYearLoading || isNextYearLoading;
 
   return (
-    <Popover className="fixed top-4 right-4 z-40">
+    <Popover>
       <PopoverButton
         aria-label="Informatie over dal- en spitsuren"
-        className="group flex size-9 items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+        className="group fixed top-4 right-4 z-50 flex size-9 items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
       >
         <Info className="size-6 transition-transform duration-300 ease-out group-hover:rotate-12 group-data-open:rotate-12" />
       </PopoverButton>
 
+      <PopoverBackdrop
+        transition
+        className="fixed inset-0 z-40 bg-ns-gray-900/40 backdrop-blur-sm transition duration-200 ease-out data-closed:opacity-0"
+      />
+
       <PopoverPanel
         transition
-        anchor="bottom end"
-        className="z-40 mt-2 max-h-[70dvh] w-[20rem] max-w-[calc(100vw-2rem)] origin-top-right overflow-y-auto rounded-2xl bg-white p-5 text-ns-gray-900 shadow-2xl ring-1 ring-ns-gray-100 transition duration-200 ease-out focus:outline-none data-closed:-translate-y-2 data-closed:scale-95 data-closed:opacity-0"
+        className="fixed inset-x-0 bottom-0 z-50 max-h-[85dvh] overflow-y-auto rounded-t-3xl bg-white px-5 pt-3 pb-[calc(1.25rem+env(safe-area-inset-bottom))] text-ns-gray-900 shadow-2xl ring-1 ring-ns-gray-100 transition duration-300 ease-out focus:outline-none data-closed:translate-y-full data-closed:opacity-0 sm:inset-x-auto sm:top-16 sm:right-4 sm:bottom-auto sm:w-[20rem] sm:max-h-[70dvh] sm:origin-top-right sm:rounded-2xl sm:p-5 sm:duration-200 sm:data-closed:-translate-y-2 sm:data-closed:scale-95"
       >
+        <div
+          aria-hidden="true"
+          className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-ns-gray-200 sm:hidden"
+        />
+        <CloseButton
+          aria-label="Sluiten"
+          className="absolute top-3 right-3 flex size-8 items-center justify-center rounded-full text-ns-gray-400 transition-colors hover:bg-ns-gray-100 hover:text-ns-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-ns-blue sm:hidden"
+        >
+          <Close className="size-5" />
+        </CloseButton>
+
         <section>
           <h2 className="text-base font-bold text-ns-blue">Tijdvensters</h2>
           <p className="mt-1 text-sm text-ns-gray-600">
