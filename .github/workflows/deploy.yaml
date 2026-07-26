@@ -60,8 +60,8 @@ jobs:
       - name: Build with Next.js
         run: pnpm next build
         env:
-          NEXT_PUBLIC_VINCE_SCRIPT_URL: ${{ vars.NEXT_PUBLIC_VINCE_SCRIPT_URL }}
-          NEXT_PUBLIC_PAGES_DOMAIN: ${{ env.PAGES_DOMAIN }}
+          NEXT_PUBLIC_UMAMI_SITE_ID: ${{ vars.NEXT_PUBLIC_UMAMI_SITE_ID }}
+          NEXT_PUBLIC_UMAMI_URL: ${{ vars.NEXT_PUBLIC_UMAMI_URL }}
           NEXT_PUBLIC_PAGES_URL: ${{ env.PAGES_URL }}
 
       - name: Upload artifact
